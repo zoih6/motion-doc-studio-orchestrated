@@ -1,0 +1,19 @@
+{
+  "name": "motion-doc-studio",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "playwright": "^1.64.0"
+  },
+  "scripts": {
+    "test": "node tools/selftest.mjs",
+    "demo:still": "cd engine && PAGE=index.html node ../tools/still.mjs 1.5 6.5 10.5 14.5",
+    "selftest": "node tools/selftest.mjs",
+    "cues:demo": "cd engine && PAGE=index.html node ../tools/export_cues.mjs",
+    "demo:kinetic": "cd engine && PAGE=kinetic.html node ../tools/render.mjs --from 0 --to 10 --draft --out /tmp/kinetic_draft.mp4"
+  },
+  "version": "4.0.0",
+  "description": "Motion-graphics films from a messy idea: a Creative Director intake agent (questions, research, pro production prompt), documentary/explainer/reel films, pro Arabic kinetic typography (motion pairs, kashida), fast deterministic rendering, and a measured SOUND LAYER (real CC0 SFX + music, QA gates).",
+  "license": "MIT",
+  "repository": "https://github.com/zoih6/motion-doc-studio-orchestrated"
+}

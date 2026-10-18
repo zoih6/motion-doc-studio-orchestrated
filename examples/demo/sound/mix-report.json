@@ -1,0 +1,312 @@
+{
+ "cues_file": "audio/cues.json",
+ "fps": 30,
+ "duration_s": 16.0,
+ "target_lufs": -14,
+ "master_lufs": -14.0,
+ "master_true_peak_db": -3.16,
+ "master_gain_db": 6.06,
+ "events": [
+  {
+   "id": "title",
+   "sound": "thump+tap",
+   "files": [
+    "audio/kit/thump/fs-389665-thump-close-wav-2.wav",
+    "audio/kit/tap/kenney-impact-impact-metal-heavy-003.wav"
+   ],
+   "weight": "hero",
+   "align": "peak",
+   "cue_s": 0.6333,
+   "peak_s": 0.6333,
+   "pan": 0.4,
+   "gain_db": -22.89,
+   "limited_by": "main-band target (hero)",
+   "band_hz": [
+    125,
+    250
+   ],
+   "win_s": [
+    0.6233,
+    0.783
+   ],
+   "visual": "land"
+  },
+  {
+   "id": "kicker",
+   "sound": "tap",
+   "files": [
+    "audio/kit/tap/kenney-impact-impact-metal-light-000.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 1.3,
+   "peak_s": 1.3,
+   "pan": 0.4,
+   "gain_db": -26.95,
+   "limited_by": "best-band target",
+   "band_hz": [
+    2000,
+    4000
+   ],
+   "win_s": [
+    1.29,
+    1.3939
+   ],
+   "visual": "land"
+  },
+  {
+   "id": "tear-rule",
+   "sound": "paper/fs-140463-packaging-paper-rub-sliding-1",
+   "files": [
+    "audio/kit/paper/fs-140463-packaging-paper-rub-sliding-1.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 4.3333,
+   "peak_s": 4.3333,
+   "pan": 0.0,
+   "gain_db": -25.52,
+   "limited_by": "best-band target",
+   "band_hz": [
+    4000,
+    8000
+   ],
+   "win_s": [
+    4.3233,
+    4.4093
+   ],
+   "visual": "move"
+  },
+  {
+   "id": "dot-0",
+   "sound": "pop",
+   "files": [
+    "audio/kit/pop/fs-188381-3-popping-pops-1.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 5.8333,
+   "peak_s": 5.8333,
+   "pan": -0.47,
+   "gain_db": -34.31,
+   "limited_by": "best-band target",
+   "band_hz": [
+    1000,
+    2000
+   ],
+   "win_s": [
+    5.8233,
+    5.8733
+   ],
+   "visual": "appear"
+  },
+  {
+   "id": "dot-3",
+   "sound": "pop",
+   "files": [
+    "audio/kit/pop/fs-206152-bottlepop44-wav-1.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 6.1,
+   "peak_s": 6.1,
+   "pan": -0.47,
+   "gain_db": -31.01,
+   "limited_by": "best-band target",
+   "band_hz": [
+    1000,
+    2000
+   ],
+   "win_s": [
+    6.09,
+    6.14
+   ],
+   "visual": "appear"
+  },
+  {
+   "id": "caption",
+   "sound": "tap/fs-369710-wood-knock",
+   "files": [
+    "audio/kit/tap/fs-369710-wood-knock.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 6.6333,
+   "peak_s": 6.6333,
+   "pan": 0.0,
+   "gain_db": -17.88,
+   "limited_by": "best-band target",
+   "band_hz": [
+    500,
+    1000
+   ],
+   "win_s": [
+    6.6233,
+    6.6733
+   ],
+   "visual": "appear"
+  },
+  {
+   "id": "tear-list",
+   "sound": "paper/fs-397550-page-turn-03-wav-2",
+   "files": [
+    "audio/kit/paper/fs-397550-page-turn-03-wav-2.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 8.3333,
+   "peak_s": 8.3333,
+   "pan": 0.0,
+   "gain_db": -38.32,
+   "limited_by": "best-band target",
+   "band_hz": [
+    4000,
+    8000
+   ],
+   "win_s": [
+    8.3233,
+    8.3733
+   ],
+   "visual": "move"
+  },
+  {
+   "id": "fact-0",
+   "sound": "swish",
+   "files": [
+    "audio/kit/swish/fs-14175-27-wav-1.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 9.0,
+   "peak_s": 9.0,
+   "pan": 0.54,
+   "gain_db": -11.39,
+   "limited_by": "peak cap",
+   "band_hz": [
+    125,
+    250
+   ],
+   "win_s": [
+    8.99,
+    9.1441
+   ],
+   "visual": "move"
+  },
+  {
+   "id": "fact-1",
+   "sound": "swish",
+   "files": [
+    "audio/kit/swish/fs-388003-double-swish-1.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 9.9,
+   "peak_s": 9.9,
+   "pan": 0.0,
+   "gain_db": -11.41,
+   "limited_by": "best-band target",
+   "band_hz": [
+    500,
+    1000
+   ],
+   "win_s": [
+    9.89,
+    10.05
+   ],
+   "visual": "move"
+  },
+  {
+   "id": "fact-2",
+   "sound": "swish",
+   "files": [
+    "audio/kit/swish/kenney-rpg-cloth1.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 10.8,
+   "peak_s": 10.8,
+   "pan": -0.54,
+   "gain_db": -13.41,
+   "limited_by": "best-band target",
+   "band_hz": [
+    1000,
+    2000
+   ],
+   "win_s": [
+    10.79,
+    10.95
+   ],
+   "visual": "move"
+  },
+  {
+   "id": "tear-end",
+   "sound": "paper/fs-397550-page-turn-03-wav-2",
+   "files": [
+    "audio/kit/paper/fs-397550-page-turn-03-wav-2.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 12.3333,
+   "peak_s": 12.3333,
+   "pan": 0.0,
+   "gain_db": -38.38,
+   "limited_by": "best-band target",
+   "band_hz": [
+    4000,
+    8000
+   ],
+   "win_s": [
+    12.3233,
+    12.3733
+   ],
+   "visual": "move"
+  },
+  {
+   "id": "end",
+   "sound": "thump/fs-133282-thump-on-carpet-2+tap",
+   "files": [
+    "audio/kit/thump/fs-133282-thump-on-carpet-2.wav",
+    "audio/kit/tap/kenney-impact-impact-plate-heavy-003.wav"
+   ],
+   "weight": "hero",
+   "align": "peak",
+   "cue_s": 12.8,
+   "peak_s": 12.8,
+   "pan": 0.0,
+   "gain_db": -21.44,
+   "limited_by": "main-band target (hero)",
+   "band_hz": [
+    250,
+    500
+   ],
+   "win_s": [
+    12.79,
+    12.9004
+   ],
+   "visual": "land"
+  },
+  {
+   "id": "end-rise",
+   "sound": "riser",
+   "files": [
+    "audio/kit/riser/fs-275512-reversed-riser-wav-1.wav"
+   ],
+   "weight": "support",
+   "align": "peak",
+   "cue_s": 12.8,
+   "peak_s": 12.8,
+   "pan": 0.0,
+   "gain_db": -45.38,
+   "limited_by": "best-band target + cluster x0.6",
+   "band_hz": [
+    2000,
+    4000
+   ],
+   "win_s": [
+    12.79,
+    12.84
+   ],
+   "visual": null
+  }
+ ]
+}

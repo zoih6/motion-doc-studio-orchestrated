@@ -1,0 +1,49 @@
+{
+  "name": "motion-doc-studio",
+  "version": "4.0.0",
+  "description": "Motion-graphics films from a messy idea: a Creative Director intake agent (questions, research, pro production prompt), documentary/explainer/reel films, pro Arabic kinetic typography (motion pairs, kashida), fast deterministic rendering, and a measured SOUND LAYER (real CC0 SFX + music, QA gates).",
+  "author": {
+    "name": "zoih6",
+    "url": "https://github.com/zoih6"
+  },
+  "homepage": "https://github.com/zoih6/motion-doc-studio-orchestrated",
+  "repository": "https://github.com/zoih6/motion-doc-studio-orchestrated",
+  "license": "MIT",
+  "keywords": [
+    "motion-graphics",
+    "video",
+    "animation",
+    "documentary",
+    "explainer",
+    "vox",
+    "arabic",
+    "rtl",
+    "sound-design",
+    "sfx",
+    "canvas",
+    "playwright",
+    "ffmpeg",
+    "skills",
+    "kinetic-typography",
+    "lyric-video",
+    "creative-director"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Motion-Doc Studio",
+    "shortDescription": "From a messy idea to a finished motion-graphics film: intake agent, kinetic type, measured sound.",
+    "longDescription": "A code-driven canvas engine, 84 named moves, 125 GL transitions, 41 OFL fonts, Arabic/RTL rules, critique loops, chunked rendering, and a SOUND LAYER (real CC0 recordings, cues from the picture's springs, -14 LUFS mix, qa.py gates). Includes a full 4-minute Arabic documentary as the example.",
+    "developerName": "zoih6",
+    "category": "Media",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Start a new video project (ask me the questions first)",
+      "Make a 30-second Arabic kinetic-text video from my poem",
+      "Add real sound effects and music to my motion video and run the sound QA"
+    ]
+  }
+}

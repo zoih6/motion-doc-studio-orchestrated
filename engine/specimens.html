@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><title>motion-doc-studio · resource specimens</title>
+<link rel="stylesheet" href="kit/fonts/fonts.css">
+<style>html,body{margin:0;background:#111}canvas{display:block;max-width:100%}</style></head><body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script>window.FILM = { fonts: [] };</script>
+<script src="core.js"></script><script src="helpers.js"></script><script src="fx.js"></script>
+<script src="kit/fonts/fonts.js"></script><script src="kit/data/palettes.js"></script><script src="kit/data/icons_lucide.js"></script>
+<script src="kit/data/gl_transitions.js"></script><script src="gl.js"></script><script src="moves.js"></script><script src="assets.js"></script>
+<script>
+// Specimen sheets for the library (regenerate: node tools/specimens.mjs). Also a quick visual browser: open this file.
+const on = (w, h) => { const c = mk(w, h); g = c.getContext('2d'); return c; };
+const done = c => { g = MAIN; return c.toDataURL('image/jpeg', .9); };
+const txt = (s, x, y, font, col, align = 'left', dir = 'ltr') => { g.font = font; g.fillStyle = col; g.textAlign = align; g.direction = dir; g.fillText(s, x, y); g.direction = 'ltr'; };
+window.spec = {
+  async fonts() { const rows = FONT_REGISTRY, rh = 118, c = on(1920, 120 + rows.length * rh); g.fillStyle = '#f4efe4'; g.fillRect(0, 0, c.width, c.height);
+    for (const f of rows) for (const w of f.weights) await document.fonts.load(`${w.split(' ').pop()} 60px "${f.family}"`, 'أب abc');
+    await document.fonts.load('700 40px Inter'); await document.fonts.load('400 20px Inter');
+    txt('Font kit — ' + rows.length + ' OFL families · engine/kit/fonts', 60, 76, '700 40px Inter', '#141414');
+    rows.forEach((f, i) => { const y = 120 + i * rh, w = f.weights[0].split(' ').pop(); g.fillStyle = i % 2 ? '#efe8da' : '#f4efe4'; g.fillRect(0, y, 1920, rh);
+      txt(f.family, 60, y + 46, '700 28px Inter', '#141414'); txt(f.genre + ' · ' + f.role, 60, y + 80, '400 20px Inter', '#6b6256');
+      const ar = f.script.includes('ar'), samp = ar ? 'الخطّ العربي يتحرّك — ١٤٤٧' : 'Motion Doc Studio 2026';
+      txt(samp, 1860, y + 80, `${w} 62px "${f.family}"`, '#141414', 'right', ar ? 'rtl' : 'ltr');
+      if (ar && f.script.includes('lat')) txt('Aa 123', 640, y + 80, `${w} 46px "${f.family}"`, '#9b8f7d'); });
+    return done(c); },
+  palettes() { const H0 = Object.keys(HERITAGE), c = on(1920, 1500); g.fillStyle = '#101010'; g.fillRect(0, 0, 1920, 1500);
+    txt('Heritage & documentary palettes (original) — HERITAGE in engine/assets.js', 60, 70, '700 34px Inter', '#f2f2f2');
+    H0.forEach((n, i) => { const x = 60 + (i % 4) * 455, y = 100 + Math.floor(i / 4) * 150, r = heritage(n);
+      g.fillStyle = r.bg; g.fillRect(x, y, 430, 120); [r.ink, r.paper, r.accent, r.accent2, r.muted].forEach((h, j) => { g.fillStyle = h; g.fillRect(x + 220 + j * 40, y + 20, 34, 80); });
+      txt(n, x + 16, y + 52, '700 22px Inter', r.ink); txt('accent', x + 16, y + 86, '600 18px Inter', r.accent); });
+    txt('Nice-color-palettes (MIT) — first 160 of 1000 · palette(i) → paletteRoles(p) → applyPalette(r)', 60, 880, '700 28px Inter', '#f2f2f2');
+    for (let i = 0; i < 160; i++) { const p = palette(i), x = 60 + (i % 16) * 113, y = 910 + Math.floor(i / 16) * 58; p.forEach((h, j) => { g.fillStyle = h; g.fillRect(x + j * 20, y, 20, 40); }); txt(String(i), x, y + 54, '400 12px Inter', '#888'); }
+    return done(c); },
+  icons(start = 0, n = 240) { const names = Object.keys(LUCIDE).slice(start, start + n), cols = 20, cw = 92, ch = 104, c = on(cols * cw + 40, 90 + Math.ceil(names.length / cols) * ch); g.fillStyle = '#f6f3ec'; g.fillRect(0, 0, c.width, c.height);
+    txt(`Lucide icons (ISC) ${start}–${start + names.length - 1} of ${Object.keys(LUCIDE).length} · icon(name, x, y, size, {k})`, 20, 50, '700 26px Inter', '#141414');
+    names.forEach((nm, i) => { const x = 20 + (i % cols) * cw + cw / 2, y = 90 + Math.floor(i / cols) * ch + 40; icon(nm, x, y, 44, { color: '#1b1b1b' }); txt(nm.slice(0, 13), x, y + 46, '400 11px Inter', '#6b6256', 'center'); });
+    return done(c); },
+  drawOn() { const c = on(1920, 420), list = ['landmark', 'scroll-text', 'feather', 'pen-tool', 'book-open', 'map', 'compass', 'hourglass'], ks = [.15, .35, .55, .75, 1];
+    g.fillStyle = '#14110d'; g.fillRect(0, 0, 1920, 420); txt('icon draw-on k = .15 · .35 · .55 · .75 · 1', 40, 50, '700 26px Inter', '#e8d7b2');
+    list.forEach((nm, j) => ks.forEach((k, i) => icon(nm, 110 + i * 360 + (j % 2) * 160, 120 + Math.floor(j / 2) * 75, 56, { color: '#c99a45', lw: 1.8, k })));
+    return done(c); },
+  patterns() { const kinds = PATTERN_KINDS, cols = 5, tw0 = 360, th = 300, c = on(cols * (tw0 + 20) + 20, 80 + Math.ceil(kinds.length / cols) * (th + 50)); g.fillStyle = '#0f0d0a'; g.fillRect(0, 0, c.width, c.height);
+    txt('pattern(kind, t, {…}) — Islamic geometric + graphic backgrounds (engine/assets.js)', 20, 50, '700 26px Inter', '#e8d7b2');
+    kinds.forEach((k, i) => { const x = 20 + (i % cols) * (tw0 + 20), y = 80 + Math.floor(i / cols) * (th + 50); g.fillStyle = '#1b1712'; g.fillRect(x, y, tw0, th);
+      pattern(k, 2, { x, y, w: tw0, h: th, cell: k === 'halftone' ? 28 : k === 'dots' ? 36 : k === 'topo' ? 220 : 90, color: '#c99a45', lw: 1.6, k: 1 }); txt(k, x, y + th + 32, '600 22px Inter', '#e8d7b2'); });
+    return done(c); },
+  moves(type) { const names = movesBy(type), us = [0, .15, .3, .5, .7, 1], cw = 150, ch = 120, c = on(260 + us.length * cw, 70 + names.length * ch); g.fillStyle = '#f4efe4'; g.fillRect(0, 0, c.width, c.height);
+    txt(`MOVES · ${type} (${names.length}) — u = ${type === 'loop' ? 'seconds 0 .5 1 1.5 2 2.5' : us.join(' · ')}`, 20, 44, '700 24px Inter', '#141414');
+    names.forEach((nm, j) => { const y = 70 + j * ch; g.fillStyle = j % 2 ? '#ece5d6' : '#f4efe4'; g.fillRect(0, y, c.width, ch); txt(nm, 20, y + ch / 2 + 8, '600 20px Inter', '#141414');
+      us.forEach((u, i) => { const cx = 260 + i * cw + cw / 2, cy = y + ch / 2, M = MOVES[nm], st = M.type === 'loop' ? M.f(u * 2.5, { w: 70, h: 44 }) : M.f(u, { w: 70, h: 44, dist: 60, W: 300, H: 160 });
+        g.save(); g.beginPath(); g.rect(260 + i * cw + 2, y + 2, cw - 4, ch - 4); g.clip(); g.strokeStyle = 'rgba(0,0,0,.08)'; g.strokeRect(cx - 35, cy - 22, 70, 44);
+        applyMoveState(st, { x: cx, y: cy, w: 70, h: 44 }, s => { g.fillStyle = '#c8553d'; rrect(-35, -22, 70, 44, 8, g); g.fill(); if (s.shade) { g.fillStyle = `rgba(0,0,0,${(s.shade * .4).toFixed(2)})`; g.fill(); } g.fillStyle = '#fff'; g.font = '700 22px Cairo'; g.textAlign = 'center'; g.fillText('أ', 0, 8); }); g.restore(); }); });
+    return done(c); },
+  gl(p = .5) { const mkF = (c1, c2, ch) => { const c = mk(W, H), x = c.getContext('2d'), gr = x.createLinearGradient(0, 0, W, H); gr.addColorStop(0, c1); gr.addColorStop(1, c2); x.fillStyle = gr; x.fillRect(0, 0, W, H);
+      x.fillStyle = 'rgba(255,255,255,.9)'; x.font = '700 520px Amiri'; x.textAlign = 'center'; x.direction = 'rtl'; x.fillText(ch, W / 2, H * .72); x.strokeStyle = 'rgba(255,255,255,.35)'; x.lineWidth = 6; for (let i = 0; i < 12; i++) { x.beginPath(); x.arc(W * .2, H * .3, 60 + i * 50, 0, 6.283); x.stroke(); } return c; };
+    const A1 = mkF('#2a1b12', '#c8553d', 'أ'), B1 = mkF('#0e2a47', '#2e8b7a', 'ب'), names = GLT.list(), cols = 10, tw0 = 192, th = 108, c = on(cols * (tw0 + 8) + 8, 60 + Math.ceil(names.length / cols) * (th + 30));
+    g.fillStyle = '#111'; g.fillRect(0, 0, c.width, c.height); txt(`gl-transitions pack (${names.length}, MIT/BSD) at progress ${p} — shot.tin = 'gl:<Name>'`, 8, 40, '700 22px Inter', '#eee');
+    names.forEach((n, i) => { const x = 8 + (i % cols) * (tw0 + 8), y = 60 + Math.floor(i / cols) * (th + 30); try { const f = GLT.frame(n, A1, B1, p); g.drawImage(f, x, y, tw0, th); } catch (e) { g.fillStyle = '#600'; g.fillRect(x, y, tw0, th); console.log('GLFAIL', n, e.message); }
+      txt(n.slice(0, 26), x, y + th + 18, '400 13px Inter', '#bbb'); });
+    return done(c); },
+};
+window.ready = true;
+</script></body></html>

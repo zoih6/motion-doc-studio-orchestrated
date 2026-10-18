@@ -1,0 +1,28 @@
+node_modules
+tmp/
+out/
+renders/
+segments/
+dl/
+**/tmp/
+*.part.mp4
+.ghtok
+# SOUND LAYER (rebuilt by tools/sound_layer.sh; never commit)
+sound-layer/
+**/audio/kit/
+**/audio/stems/
+**/audio/_raw/
+**/audio/candidates/
+engine/audio/
+engine/video.mp4
+__pycache__/
+
+# Orchestrator runtime state and secrets
+.env
+.env.*
+!.env.example
+*.pid
+*.status
+*.log
+/tmp/
+.var/

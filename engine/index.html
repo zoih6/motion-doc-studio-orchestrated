@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>motion-doc-studio · film</title>
+<link rel="stylesheet" href="kit/fonts/fonts.css">   <!-- 41 local OFL families (kit/fonts/README.md). One display face + one UI face per film. -->
+<style>
+html,body{margin:0;background:#0c0906}canvas{display:block;width:100vw;max-width:1920px}
+</style></head><body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="kit/fonts/fonts.js"></script>   <!-- FONT_REGISTRY, fontsBy(), fontLoads() -->
+<script>
+// per-film configuration (edit this, not core.js)
+window.FILM = {
+  palette: {},              // override any of: bg ink parch cream gold goldL goldD red
+  display: 'Amiri', ui: 'Kufi', typeScale: 1.3,
+  fonts: ['700 60px Amiri', '400 60px Amiri', '800 60px Kufi', '600 60px Kufi'],
+  textures: {},             // {paper_cream:'kit/textures/…', bg_dark:'…'}
+  // tin: 'tear',           // default transition: 'tear' | 'cut' | any TRANS key in fx.js (whip, zoom, flash, iris, …)
+  // post: t => fxLook(t, 'film'),   // finishing chain (default = sepia grade). See library/compositing_fx.md
+  // tin: 'gl:Dreamy',      // any of 125 GPU transitions (library/gl_transitions.md)
+  // style: library/style_catalog.md → palette heritage('mamlukGold') via applyPalette() in a scene INIT
+};
+</script>
+<script src="core.js"></script>
+<script src="helpers.js"></script>
+<script src="fx.js"></script>   <!-- pro layer: easing/camera/type/FX/transitions (optional but recommended) -->
+<!-- v1.2 resource packs (all optional; delete the lines you don't use) -->
+<script src="kit/data/palettes.js"></script>        <!-- 1000 palettes + Open Color (MIT) -->
+<script src="kit/data/icons_lucide.js"></script>    <!-- 1877 Lucide icons (ISC), ~560 KB -->
+<script src="kit/data/gl_transitions.js"></script>  <!-- 125 GLSL transitions (MIT/BSD) -->
+<script src="gl.js"></script>                       <!-- registers TRANS['gl:<Name>'] -->
+<script src="moves.js"></script>                    <!-- MOVES dictionary: move(), seqMove(), staggerMove() -->
+<script src="assets.js"></script>                   <!-- palette()/HERITAGE/applyPalette, icon(), pattern() -->
+<script src="cues.js"></script>                     <!-- SOUND LAYER: cue()/when — sound cues from the picture's own springs (workflow/10_sound_layer.md) -->
+<script src="scenes/demo.js"></script>
+<!-- add one file per VO section: scenes/s01.js, scenes/s02.js … (order does not matter, SHOTS are sorted) -->
+<script>init();</script>
+</body></html>

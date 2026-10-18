@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "v0.9.0 Artifact-bound Review Receipt",
+  "type": "object",
+  "required": ["producerContext", "board", "master", "reviews"],
+  "properties": {
+    "producerContext": {"type": "string", "minLength": 1},
+    "board": {"$ref": "#/$defs/artifact"},
+    "master": {"$ref": "#/$defs/artifact"},
+    "reviews": {
+      "type": "object",
+      "required": ["design", "editorial", "technical"],
+      "properties": {
+        "design": {"$ref": "#/$defs/artifact"},
+        "editorial": {"$ref": "#/$defs/artifact"},
+        "technical": {"$ref": "#/$defs/artifact"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "required": ["file", "sha256"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

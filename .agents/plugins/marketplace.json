@@ -1,0 +1,22 @@
+{
+  "name": "motion-doc-studio",
+  "interface": {
+    "displayName": "Motion-Doc Studio"
+  },
+  "plugins": [
+    {
+      "name": "motion-doc-studio",
+      "version": "4.0.0",
+      "description": "Motion-graphics films from a messy idea: a Creative Director intake agent (questions, research, pro production prompt), documentary/explainer/reel films, pro Arabic kinetic typography (motion pairs, kashida), fast deterministic rendering, and a measured SOUND LAYER (real CC0 SFX + music, QA gates).",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Media"
+    }
+  ]
+}

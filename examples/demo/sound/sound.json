@@ -1,0 +1,5 @@
+{
+  "energy": "punchy",
+  "music": { "file": "audio/music.mp3", "start_s": 0, "loop": true, "fade_out_s": 1.5 },
+  "duck_db": 10
+}

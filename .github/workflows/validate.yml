@@ -1,0 +1,28 @@
+name: validate
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Manifests are valid JSON and versions agree
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .codex-plugin/plugin.json .agents/plugins/marketplace.json gemini-extension.json package.json; do python3 -m json.tool "$f" >/dev/null; done
+          V=$(python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          for f in .codex-plugin/plugin.json gemini-extension.json package.json; do test "$(python3 -c "import json;print(json.load(open('$f'))['version'])")" = "$V"; done
+          grep -q "version: $V" skills/motion-doc-studio/SKILL.md
+      - name: Skill frontmatter (name matches folder, description present)
+        run: |
+          for d in skills/*/; do n=$(basename "$d"); head -3 "$d/SKILL.md" | grep -q "^name: $n$"; grep -q "^description:" "$d/SKILL.md"; done
+      - name: Vendored sound-layer is unmodified
+        run: cd vendor/opus-sound-layer && sha256sum -c ../opus-sound-layer.sha256
+      - name: Shell + JS syntax
+        run: |
+          for f in install.sh tools/*.sh skills/*/scripts/*.sh; do bash -n "$f"; done
+          for f in engine/*.js engine/scenes/*.js tools/*.mjs; do node --check "$f"; done
+      - name: Claude plugin validate
+        run: npx -y @anthropic-ai/claude-code plugin validate .
+      - name: Engine selftest (incl. cue registry)
+        run: npm i --no-audit --no-fund && npx playwright install --with-deps chromium && node tools/selftest.mjs

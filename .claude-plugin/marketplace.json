@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "motion-doc-studio",
+  "description": "Motion-graphics films from a messy idea: a Creative Director intake agent (questions, research, pro production prompt), documentary/explainer/reel films, pro Arabic kinetic typography (motion pairs, kashida), fast deterministic rendering, and a measured SOUND LAYER (real CC0 SFX + music, QA gates).",
+  "owner": {
+    "name": "zoih6",
+    "url": "https://github.com/zoih6"
+  },
+  "plugins": [
+    {
+      "name": "motion-doc-studio",
+      "version": "4.0.0",
+      "source": "./",
+      "description": "Motion-graphics films from a messy idea: a Creative Director intake agent (questions, research, pro production prompt), documentary/explainer/reel films, pro Arabic kinetic typography (motion pairs, kashida), fast deterministic rendering, and a measured SOUND LAYER (real CC0 SFX + music, QA gates).",
+      "homepage": "https://github.com/zoih6/motion-doc-studio-orchestrated",
+      "license": "MIT",
+      "keywords": [
+        "motion-graphics",
+        "video",
+        "animation",
+        "documentary",
+        "explainer",
+        "vox",
+        "arabic",
+        "rtl",
+        "sound-design",
+        "sfx",
+        "canvas",
+        "playwright",
+        "ffmpeg",
+        "skills",
+        "kinetic-typography",
+        "lyric-video",
+        "creative-director"
+      ],
+      "category": "media"
+    }
+  ]
+}

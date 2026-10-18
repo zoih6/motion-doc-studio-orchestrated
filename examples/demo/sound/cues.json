@@ -1,0 +1,121 @@
+{
+ "fps": 30,
+ "duration_s": 16,
+ "energy": "punchy",
+ "kit": "audio/kit",
+ "music": {
+  "file": "audio/music.mp3",
+  "start_s": 0,
+  "loop": true,
+  "fade_out_s": 1.5
+ },
+ "duck_db": 10,
+ "cues": [
+  {
+   "id": "title",
+   "frame": 19,
+   "visual": "land",
+   "sound": "thump+tap",
+   "weight": "hero",
+   "pan": 0.4,
+   "stop_before": false,
+   "build": false,
+   "src": "spring card @0.25s \u2192 land"
+  },
+  {
+   "id": "kicker",
+   "frame": 39,
+   "visual": "land",
+   "sound": "tap",
+   "pan": 0.4,
+   "src": "spring card @0.9s \u2192 land"
+  },
+  {
+   "id": "tear-rule",
+   "frame": 130,
+   "visual": "move",
+   "sound": "paper/fs-140463-packaging-paper-rub-sliding-1",
+   "src": "ease 4\u20134.62s \u2192 peak"
+  },
+  {
+   "id": "dot-0",
+   "frame": 175,
+   "visual": "appear",
+   "sound": "pop",
+   "pan": -0.47,
+   "pitch": 0,
+   "src": "spring snap @5.8s \u2192 start"
+  },
+  {
+   "id": "dot-3",
+   "frame": 183,
+   "visual": "appear",
+   "sound": "pop",
+   "pan": -0.47,
+   "pitch": 2,
+   "src": "spring snap @6.07s \u2192 start"
+  },
+  {
+   "id": "caption",
+   "frame": 199,
+   "visual": "appear",
+   "sound": "tap/fs-369710-wood-knock",
+   "src": "spring card @6.6s \u2192 start"
+  },
+  {
+   "id": "tear-list",
+   "frame": 250,
+   "visual": "move",
+   "sound": "paper/fs-397550-page-turn-03-wav-2",
+   "src": "ease 8\u20138.62s \u2192 peak"
+  },
+  {
+   "id": "fact-0",
+   "frame": 270,
+   "visual": "move",
+   "sound": "swish",
+   "pan": 0.54,
+   "src": "spring card @8.9s \u2192 peak"
+  },
+  {
+   "id": "fact-1",
+   "frame": 297,
+   "visual": "move",
+   "sound": "swish",
+   "pan": 0,
+   "src": "spring card @9.8s \u2192 peak"
+  },
+  {
+   "id": "fact-2",
+   "frame": 324,
+   "visual": "move",
+   "sound": "swish",
+   "pan": -0.54,
+   "src": "spring card @10.7s \u2192 peak"
+  },
+  {
+   "id": "tear-end",
+   "frame": 370,
+   "visual": "move",
+   "sound": "paper/fs-397550-page-turn-03-wav-2",
+   "src": "ease 12\u201312.62s \u2192 peak"
+  },
+  {
+   "id": "end",
+   "frame": 384,
+   "visual": "land",
+   "sound": "thump/fs-133282-thump-on-carpet-2+tap",
+   "weight": "hero",
+   "stop_before": true,
+   "build": true,
+   "src": "spring card @12.4s \u2192 land"
+  },
+  {
+   "id": "end-rise",
+   "frame": 384,
+   "sound": "riser",
+   "align": "peak",
+   "src": "frame 384"
+  }
+ ]
+}

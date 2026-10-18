@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tunable Parameter Manifest",
+  "type": "object",
+  "required": [
+    "projectId",
+    "scenes"
+  ],
+  "properties": {
+    "projectId": {
+      "type": "string"
+    },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sceneId",
+          "parameters"
+        ],
+        "properties": {
+          "sceneId": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "type",
+                "currentValue",
+                "semanticRole",
+                "repairPriority"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "enum": [
+                    "number",
+                    "integer",
+                    "boolean",
+                    "enum",
+                    "string",
+                    "color"
+                  ]
+                },
+                "currentValue": {},
+                "min": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "max": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "step": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "allowedValues": {
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "semanticRole": {
+                  "type": "string"
+                },
+                "repairPriority": {
+                  "enum": [
+                    "high",
+                    "medium",
+                    "low"
+                  ]
+                },
+                "studioExposed": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

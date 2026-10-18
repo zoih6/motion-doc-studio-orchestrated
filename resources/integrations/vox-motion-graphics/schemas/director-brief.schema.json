@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["projectId", "viewerPromise", "format", "audience", "tone", "factuality", "emotionalArc", "materialWorld"],
+  "properties": {
+    "projectId": {"type": "string"},
+    "viewerPromise": {"type": "string"},
+    "format": {
+      "type": "object",
+      "required": ["aspectRatio", "durationEnvelopeSec"],
+      "properties": {
+        "platforms": {"type": "array", "items": {"type": "string"}},
+        "aspectRatio": {"type": "string"},
+        "durationEnvelopeSec": {
+          "type": "object",
+          "required": ["min", "max"],
+          "properties": {
+            "min": {"type": "number", "minimum": 1},
+            "max": {"type": "number", "minimum": 1}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "audience": {"type": "string"},
+    "tone": {"type": "string"},
+    "factuality": {"enum": ["factual", "illustrative", "fictional", "mixed"]},
+    "emotionalArc": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "materialWorld": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "contrastPair": {
+      "type": ["object", "null"],
+      "properties": {"a": {"type": "string"}, "b": {"type": "string"}},
+      "required": ["a", "b"],
+      "additionalProperties": false
+    },
+    "productionConstraints": {"type": "array", "items": {"type": "string"}},
+    "assumptions": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

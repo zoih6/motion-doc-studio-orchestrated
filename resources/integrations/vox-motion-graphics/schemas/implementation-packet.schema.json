@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vox-motion-graphics.local/schemas/implementation-packet.schema.json",
+  "title": "v0.10 Bounded Implementation Packet",
+  "type": "object",
+  "required": ["projectId", "packetType", "frozenBoard", "scope", "context", "artifacts", "evidence", "style", "timing", "assets", "neighbors"],
+  "properties": {
+    "projectId": {"type": "string", "minLength": 1},
+    "packetType": {"enum": ["ScenePacket", "SequencePacket"]},
+    "frozenBoard": {"$ref": "review-receipt.schema.json#/$defs/artifact"},
+    "scope": {"type": "object", "required": ["id", "sceneIds"], "properties": {"id": {"type": "string", "minLength": 1}, "sceneIds": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true}}, "additionalProperties": false},
+    "context": {"type": "object", "required": ["objective"], "properties": {"objective": {"type": "string", "minLength": 1}, "constraints": {"type": "array", "items": {"type": "string", "minLength": 1}}}, "additionalProperties": false},
+    "artifacts": {"type": "array", "items": {"$ref": "#/$defs/evidenceItem"}},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceItem"}},
+    "style": {"type": "object", "required": ["visualLanguage"], "properties": {"visualLanguage": {"type": "string", "minLength": 1}, "palette": {"type": "string"}, "typography": {"type": "string"}}, "additionalProperties": false},
+    "timing": {"type": "object", "required": ["startSec", "durationSec"], "properties": {"startSec": {"type": "number", "minimum": 0}, "durationSec": {"type": "number", "exclusiveMinimum": 0}, "beats": {"type": "array", "items": {"type": "object", "required": ["id", "startSec", "endSec"], "properties": {"id": {"type": "string", "minLength": 1}, "startSec": {"type": "number", "minimum": 0}, "endSec": {"type": "number", "exclusiveMinimum": 0}}, "additionalProperties": false}}}, "additionalProperties": false},
+    "assets": {"type": "array", "items": {"type": "object", "required": ["id", "role", "file", "purpose"], "properties": {"id": {"type": "string", "minLength": 1}, "role": {"type": "string", "minLength": 1}, "file": {"type": "string", "minLength": 1}, "purpose": {"type": "string", "minLength": 1}}, "additionalProperties": false}},
+    "neighbors": {"type": "object", "properties": {"previous": {"$ref": "#/$defs/neighbor"}, "next": {"$ref": "#/$defs/neighbor"}}, "additionalProperties": false}
+  },
+  "$defs": {
+    "evidenceItem": {"type": "object", "required": ["file", "sha256", "purpose"], "properties": {"file": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "purpose": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+    "neighbor": {"type": "object", "required": ["sceneId", "handoff"], "properties": {"sceneId": {"type": "string", "minLength": 1}, "handoff": {"type": "string", "minLength": 1}}, "additionalProperties": false}
+  },
+  "allOf": [
+    {"if": {"properties": {"packetType": {"const": "ScenePacket"}}, "required": ["packetType"]}, "then": {"properties": {"scope": {"properties": {"sceneIds": {"maxItems": 1}}}}}}
+  ],
+  "additionalProperties": false
+}

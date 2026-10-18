@@ -1,0 +1,38 @@
+{
+  "mode": "vo-sequence",
+  "scene": "Recreate the reference collage montage from 0720.mp4 with coded paper-cutout motion and generated transparent assets",
+  "reference_url": "",
+  "duration_seconds": 22.666667,
+  "fps": 30,
+  "engine": "remotion",
+  "image_model": "GPT Image 1 via Replicate",
+  "audio_model": "Lyria 2 + ElevenLabs",
+  "style_rules": {
+    "materials": [
+      "visible paper grain",
+      "torn or rough-cut edges",
+      "thin white sticker borders on hero cutouts"
+    ],
+    "motion": [
+      "smooth background parallax",
+      "uneven stepped holds on characters",
+      "container sandwich depth when characters ride inside props"
+    ],
+    "audio": [
+      "one music bed",
+      "one reveal cue",
+      "one ambience bed",
+      "one accent cue maximum unless justified"
+    ]
+  },
+  "beats": [],
+  "sequence_rules": {
+    "shared_background": true,
+    "locked_visual_system": true,
+    "cutout_stroke_accent": "#E04329",
+    "voiceover_drives_timing": true,
+    "target_scene_count": 5
+  },
+  "scenes": [],
+  "narration_lines": []
+}

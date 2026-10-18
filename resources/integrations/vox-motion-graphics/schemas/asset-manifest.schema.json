@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "v0.9.0 Motion Graphics Asset Ledger",
+  "type": "object",
+  "required": ["projectId", "assets"],
+  "properties": {
+    "projectId": {"type": "string", "minLength": 1},
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id", "sceneIds", "role", "origin", "technicalStatus",
+          "editorialStatus", "rightsStatus", "representationType"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "sceneIds": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "role": {"type": "string", "minLength": 1},
+          "origin": {"enum": ["reused", "programmatic", "sourced", "reconstructed", "generated"]},
+          "technicalStatus": {"enum": ["candidate", "available", "verified"]},
+          "editorialStatus": {"enum": ["pending", "accepted", "rejected"]},
+          "rightsStatus": {"enum": ["unresolved", "needs_review", "verified", "self_created"]},
+          "representationType": {"enum": ["literal", "evidence", "reconstruction", "metaphor", "abstract"]},
+          "file": {"type": ["string", "null"]},
+          "sourceUri": {"type": ["string", "null"]},
+          "license": {"type": ["string", "null"]},
+          "rightsEvidence": {"type": ["string", "null"]},
+          "claimIds": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "derivedFrom": {"type": ["string", "null"]},
+          "requirements": {
+            "type": "object",
+            "properties": {
+              "minWidth": {"type": "integer", "minimum": 1},
+              "minHeight": {"type": "integer", "minimum": 1},
+              "requiresAlpha": {"type": "boolean"},
+              "maxExpectedScale": {"type": "number", "exclusiveMinimum": 0},
+              "independentParts": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": true
+          },
+          "reviewEvidence": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {"properties": {"technicalStatus": {"enum": ["available", "verified"]}}, "required": ["technicalStatus"]},
+            "then": {"required": ["file"], "properties": {"file": {"type": "string", "minLength": 1}}}
+          },
+          {
+            "if": {"properties": {"editorialStatus": {"const": "accepted"}}, "required": ["editorialStatus"]},
+            "then": {
+              "properties": {"technicalStatus": {"const": "verified"}, "reviewEvidence": {"minItems": 1}},
+              "required": ["reviewEvidence"]
+            }
+          },
+          {
+            "if": {"properties": {"rightsStatus": {"const": "verified"}}, "required": ["rightsStatus"]},
+            "then": {
+              "required": ["sourceUri", "license", "rightsEvidence"],
+              "properties": {
+                "sourceUri": {"type": "string", "minLength": 1},
+                "license": {"type": "string", "minLength": 1},
+                "rightsEvidence": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          {
+            "if": {"properties": {"representationType": {"const": "evidence"}}, "required": ["representationType"]},
+            "then": {
+              "required": ["claimIds", "sourceUri"],
+              "properties": {
+                "claimIds": {"minItems": 1, "items": {"type": "string", "minLength": 1}},
+                "sourceUri": {"type": "string", "minLength": 1},
+                "origin": {"not": {"enum": ["generated", "reconstructed"]}}
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}

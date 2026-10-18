@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vox-motion-graphics.local/schemas/story-plan.schema.json",
+  "title": "Motion Graphics Story Plan",
+  "type": "object",
+  "required": ["project", "story", "narration"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["topic", "targetPlatforms", "targetDurationSec"],
+      "properties": {
+        "topic": {"type": "string"},
+        "targetPlatforms": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "targetDurationSec": {"type": "number", "minimum": 1},
+        "audience": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "story": {
+      "type": "object",
+      "required": ["angle", "hook", "thesis", "causalSpine", "payoff", "beats"],
+      "properties": {
+        "angle": {"type": "string"},
+        "hook": {"type": "string"},
+        "thesis": {"type": "string"},
+        "causalSpine": {"type": "array", "items": {"type": "string"}, "minItems": 2},
+        "payoff": {"type": "string"},
+        "beats": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "purpose", "viewerQuestionIn", "viewerQuestionOut", "emotion", "claimIds"],
+            "properties": {
+              "id": {"type": "string"},
+              "purpose": {"type": "string"},
+              "viewerQuestionIn": {"type": "string"},
+              "viewerQuestionOut": {"type": "string"},
+              "emotion": {"type": "string"},
+              "visualizableNouns": {"type": "array", "items": {"type": "string"}},
+              "claimIds": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "direction": {"$ref": "direction-plan.schema.json"},
+    "narration": {
+      "type": "object",
+      "required": ["text", "estimatedWordCount"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "estimatedWordCount": {"type": "integer", "minimum": 1},
+        "estimatedWpm": {"type": "number", "minimum": 50},
+        "factCheckStatus": {"enum": ["pending", "claims_checked"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

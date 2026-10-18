@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vox-motion-graphics.local/schemas/direction-plan.schema.json",
+  "title": "v0.10 Direction Plan",
+  "type": "object",
+  "required": ["film", "sequences"],
+  "properties": {
+    "film": {
+      "type": "object",
+      "required": ["viewerPromise", "argument", "emotionalProgression", "conclusion"],
+      "properties": {
+        "viewerPromise": {"type": "string", "minLength": 1},
+        "argument": {"type": "string", "minLength": 1},
+        "emotionalProgression": {"type": "string", "minLength": 1},
+        "callbacks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "conclusion": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "sequences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "sceneIds", "purpose", "payoffTrajectory", "rhythmIntent", "repetitionAssessment"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "sceneIds": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "purpose": {"type": "string", "minLength": 1},
+          "payoffTrajectory": {"type": "string", "minLength": 1},
+          "rhythmIntent": {"type": "string", "minLength": 1},
+          "repetitionAssessment": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "sequenceIds", "argumentTurn", "evidenceBurden", "payoff"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "sequenceIds": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "argumentTurn": {"type": "string", "minLength": 1},
+          "evidenceBurden": {"type": "string", "minLength": 1},
+          "payoff": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "vocabulary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "subjectIdentity", "visualRole", "viewpoint", "representation", "assetIds"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "subjectIdentity": {"type": "string", "minLength": 1},
+          "visualRole": {"type": "string", "minLength": 1},
+          "viewpoint": {"type": "string", "minLength": 1},
+          "representation": {"enum": ["literal", "evidence", "reconstruction", "metaphor", "abstract"]},
+          "assetIds": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "rhythmProfile": {
+      "type": "object",
+      "properties": {
+        "construction": {"type": "string"},
+        "scale": {"type": "string"},
+        "camera": {"type": "string"},
+        "object": {"type": "string"},
+        "visualDensity": {"type": "string"},
+        "informationDensity": {"type": "string"},
+        "valueColor": {"type": "string"},
+        "motionEnergy": {"type": "string"},
+        "mediaMode": {"type": "string"}
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

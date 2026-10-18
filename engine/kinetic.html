@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><title>motion-doc-studio · kinetic type film</title>
+<link rel="stylesheet" href="kit/fonts/fonts.css">
+<style>html,body{margin:0;background:#050505}canvas{display:block;height:100vh;max-height:1920px}</style></head>
+<!-- KINETIC TYPE page template (lyrics / quotes / VO captions on a black stage). Set canvas size = aspect:
+     9:16 → 1080×1920 · 1:1 → 1080×1080 · 16:9 → 1920×1080 · 4:5 → 1080×1350. render.mjs reads the size itself. -->
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="kit/fonts/fonts.js"></script>
+<script>
+window.FILM = {
+  display: 'Mirza', ui: 'Kufi', typeScale: 1.3, fps: 30, tin: 'cut',
+  fonts: ['700 60px Mirza', '400 60px Kufi', '300 60px Kufi', '700 60px Kufi'],
+  palette: { bg: '#050505' },
+  kt: { ink: '#f5f1ea', accent: '#ff7a2f', dim: '#5f5a55', bg: '#050505' },   // ONE accent colour per film
+  post: t => KT.post(t),
+};
+</script>
+<script src="core.js"></script>
+<script src="helpers.js"></script>
+<script src="fx.js"></script>
+<script src="type.js"></script>      <!-- KT: kinetic typography layer (library/kinetic_type_motion.md) -->
+<script src="moves.js"></script>
+<script src="cues.js"></script>
+<script src="scenes/kt_demo.js"></script>
+<script>init();</script>
+</body></html>

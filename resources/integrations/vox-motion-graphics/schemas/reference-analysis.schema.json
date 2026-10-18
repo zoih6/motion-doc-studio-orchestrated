@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reference Video Creative Deconstruction",
+  "type": "object",
+  "required": [
+    "referenceId",
+    "scenes",
+    "findings"
+  ],
+  "properties": {
+    "referenceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "semanticJob",
+          "constructionFamily",
+          "visualThesis",
+          "mechanism"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "startSec": {
+            "type": "number",
+            "minimum": 0
+          },
+          "endSec": {
+            "type": "number",
+            "minimum": 0
+          },
+          "semanticJob": {
+            "type": "string"
+          },
+          "constructionFamily": {
+            "type": "string"
+          },
+          "visualThesis": {
+            "type": "string"
+          },
+          "mechanism": {
+            "type": "string"
+          },
+          "anchor": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "consequence": {
+            "type": "string"
+          },
+          "launchpad": {
+            "type": "string"
+          },
+          "entryFocalZone": {
+            "type": "string"
+          },
+          "exitFocalZone": {
+            "type": "string"
+          },
+          "camera": {
+            "type": "string"
+          },
+          "layerStack": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "motionPersonality": {
+            "type": "string"
+          },
+          "surfaceTreatment": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "soundEvents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reusableRig": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding",
+          "classification",
+          "confidence"
+        ],
+        "properties": {
+          "finding": {
+            "type": "string"
+          },
+          "classification": {
+            "enum": [
+              "creator_dna",
+              "surface_style",
+              "technique_recipe",
+              "benchmark_specific"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "evidenceSceneIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
