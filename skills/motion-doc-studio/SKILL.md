@@ -103,6 +103,7 @@ the SOUND LAYER prompt verbatim on top of this engine.
 | ↺ | **Reference DNA** (whenever the user sends a reference video): measure + describe its grammar, never copy it | `docs/ref_dna/` | workflow/09_reference_dna.md |
 
 ## 2 · Rules (read before designing)
+- **Arabic render gate:** if the project contains Arabic text, run `python3 tools/validate_arabic_project.py <project>` before any render. It must pass RTL direction, local Arabic font, font preload, and no horizontal mirroring; then inspect a rendered still for shaping, dots, numerals, and reading direction.
 - `rules/design_rules.md` — composition, hierarchy, framing, typography, colour, density.
 - `rules/motion_rules.md` — springs, pacing, transitions, camera, banned list, RTL motion.
 - `rules/arabic_rtl.md` — Arabic typography & canvas pitfalls, numerals, diacritics, direction.

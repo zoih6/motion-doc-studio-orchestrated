@@ -24,8 +24,9 @@ metadata:
 6. **Design freeze:** اكتب beat list وscene list وasset manifest وmotion intent. لا تولد الأصول أو تبدأ البرمجة قبل وجود خطة تُظهر عدد الأصول، الطبقات، اللقطات، والتحولات.
 7. **Asset route:** لكل أصل اختر بالترتيب: reuse → programmatic → licensed/real → reconstruction → generated. سجّل المصدر والحالة التقنية والتحريرية والحقوق ونوع التمثيل.
 8. **Implementation:** استخدم `motion-doc-studio` للمحرك الأساسي. استخدم مواد Remotion/Paper/Vox عبر فهرس التكامل المناسب فقط. الحركة يجب أن تكون frame-driven وdeterministic، مع طبقات عمق وكاميرا عندما يخدم ذلك الفكرة.
-9. **Cheap proof:** نفّذ storyboard/preview منخفض التكلفة، ثم اختبار render قصير. لا تبدأ render كاملًا قبل نجاح الاختبار.
-10. **QA and delivery:** نفّذ technical QA وeditorial QA، أصلح السبب فقط، احفظ checkpoint، ثم نفّذ `workflow/13_github_delivery.md`. ارفع الكود والوثائق؛ ضع الفيديوهات الكبيرة في Release لا في Git.
+9. **Arabic gate:** إذا وُجد نص عربي، شغّل `python3 tools/validate_arabic_project.py <project>` قبل أي render. يجب أن يثبت الفحص اتجاه RTL، خطًا عربيًا محليًا، تحميل الخط، وعدم وجود قلب أفقي؛ عند الفشل توقف وأصلح الكود.
+10. **Cheap proof:** نفّذ storyboard/preview منخفض التكلفة، ثم اختبار render قصير. لا تبدأ render كاملًا قبل نجاح الاختبار وقراءة النص العربي بصريًا.
+11. **QA and delivery:** نفّذ technical QA وeditorial QA، أصلح السبب فقط، احفظ checkpoint، ثم نفّذ `workflow/13_github_delivery.md`. ارفع الكود والوثائق؛ ضع الفيديوهات الكبيرة في Release لا في Git.
 
 ## اختيار المراجع المتكاملة
 

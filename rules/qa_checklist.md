@@ -17,6 +17,7 @@
 - [ ] Style matches the style bible (palette, faces, surfaces, light, grade).
 
 ## Final
+- [ ] **Arabic/RTL gate:** if Arabic text exists, `python3 tools/validate_arabic_project.py <project>` passes; inspect direction, dots, shaping, numerals, and font loading in a rendered still.
 - [ ] Frame count = round(VO duration × fps); duration matches the VO to the frame.
 - [ ] Sound layer (`workflow/10_sound_layer.md`): `tools/sound_layer.sh verify` OK (scripts unmodified); cues exported by
       `tools/export_cues.mjs` (no hand-typed frames); no synthesized hits/clicks/whooshes.
